@@ -31,7 +31,7 @@ Start a server on the 1053 port, use test.db as backend.
 
 ``` corefile
 .:53 {
-	pdsql sqlite3 /tmp/test.db {
+    pdsql sqlite3 /tmp/test.db {
         debug db
         auto-migrate
     }
