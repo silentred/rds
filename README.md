@@ -35,9 +35,9 @@ Start a server on the 1053 port, use test.db as backend.
         debug db
         auto-migrate
     }
-	fallback original NXDOMAIN . 8.8.8.8:53
-	fallback original SERVFAIL . 8.8.8.8:53
-	log
+    fallback original NXDOMAIN . 8.8.8.8:53
+    fallback original SERVFAIL . 8.8.8.8:53
+    log
 }
 ```
 
