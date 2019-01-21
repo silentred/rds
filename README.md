@@ -1,6 +1,6 @@
-# CoreDNS plugin for DNS records in RDS
+# CoreDNS plugin for using RDS as record backend
 
-NOTE: Code is basicly copied from https://github.com/wenerme/wps. I removed some irrelevant code and add some to have a purer and useful version for mysqlf.
+NOTE: Code is basically copied from https://github.com/wenerme/wps. I removed some irrelevant code and add some to have a purer and useful version for mysqlf.
 
 The plugin name is still `pdsql` in the code. It returns NXDOMAIN code if wild match returns no records.
 
