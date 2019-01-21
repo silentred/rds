@@ -27,7 +27,7 @@ pdsql_mysql and pdsql_sqlite are meaningless, choose to prevent duplicated.
 
 ## Examples
 
-Start a server on the 1053 port, use test.db as backend.
+Start a server on the 53 port, use test.db as backend.
 
 ``` corefile
 .:53 {
