@@ -17,7 +17,7 @@ import (
 const Name = "pdsql"
 
 var (
-	SkipDomainSuffix []string
+	OnlyDomainSuffix []string
 )
 
 type PowerDNSGenericSQLBackend struct {
@@ -41,7 +41,7 @@ func (self PowerDNSGenericSQLBackend) ServeDNS(ctx context.Context, w dns.Respon
 		query.Name = query.Name[:len(query.Name)-1]
 	}
 
-	if len(SkipDomainSuffix) > 0 && hasSuffix(query.Name, SkipDomainSuffix) {
+	if len(OnlyDomainSuffix) > 0 && !hasSuffix(query.Name, OnlyDomainSuffix) {
 		return dns.RcodeNameError, nil
 	}
 
