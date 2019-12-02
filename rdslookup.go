@@ -16,6 +16,10 @@ import (
 
 const Name = "pdsql"
 
+var (
+	SkipDomainSuffix []string
+)
+
 type PowerDNSGenericSQLBackend struct {
 	*gorm.DB
 	Debug bool
@@ -35,6 +39,10 @@ func (self PowerDNSGenericSQLBackend) ServeDNS(ctx context.Context, w dns.Respon
 	if query.Name != "." {
 		// remove last dot
 		query.Name = query.Name[:len(query.Name)-1]
+	}
+
+	if len(SkipDomainSuffix) > 0 && hasSuffix(query.Name, SkipDomainSuffix) {
+		return dns.RcodeNameError, nil
 	}
 
 	switch state.QType() {
@@ -229,4 +237,13 @@ func equal(a, b string) bool {
 		}
 	}
 	return true
+}
+
+func hasSuffix(domain string, suffix []string) bool {
+	for _, suf := range suffix {
+		if len(suf) > 0 && strings.HasSuffix(domain, suf) {
+			return true
+		}
+	}
+	return false
 }
